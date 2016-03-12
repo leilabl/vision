@@ -1,9 +1,23 @@
 <section id="home">
-
-<button ng-click="cameraOn()" id="cameraOn">Start!</button><br />
-<video id="v"></video>
-<canvas id="canvas" style="display:none;"></canvas>
-<img src="http://placehold.it/350x150" id="photo" alt="photo">
+<div class='row'>
+	<div class='col-sm-6'>
+		<button ng-click="cameraOn()" id="cameraOn">Start!</button><br />
+		<video id="v"></video>
+		<canvas id="canvas" style="display:none;"></canvas>
+		<img src="http://placehold.it/350x150" id="photo" alt="photo">
+	</div>
+	<div class='col-sm-6'>
+		<p>{{firstMessage}}</p>
+		<p>{{secondMessage}}</p>
+		<p>{{thirdMessage}}</p>
+		<p>{{fourthMessage}}</p>
+<!-- 		<p ng-repeat='label in labels'>{{label.description}}</p>
+		<p>anger: {{anger}}</p>
+		<p>joy: {{joy}}</p>
+		<p>sorrow: {{sorrow}}</p>
+		<p>surprise: {{surprise}}</p> -->
+	</div>
+</div>
 
 
 
