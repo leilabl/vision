@@ -1,9 +1,13 @@
 navbar {
-
   display: block;
-  background: white;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
+  background-color: transparent;
+  h1 {
+    font-family: 'Miltonian', cursive;
+    text-align: center;
+    font-size: 40px;
+  }
+/*  border-bottom: 1px solid black;
+  box-shadow: 1px 1px 14px -3px black;*/
 
   .container {
     width: 91%;
@@ -11,11 +15,11 @@ navbar {
     padding-top: 20px;
   }
 
-  fullstack-logo {
+/*  fullstack-logo {
     margin-top: 5px;
     margin-right: 20px;
     width: 40px;
-  }
+  }*/
 
   a {
     color: black;
