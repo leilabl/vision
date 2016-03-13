@@ -45,49 +45,47 @@ app.controller('homeCtrl', function ($scope, HomeFactory) {
             console.log("KO");
         }
 
-        $scope.joy = '';
+        var checkMood = function() {
+        	var canvas = document.getElementById('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0);
+                var data = canvas.toDataURL('image/jpeg');
+                console.dir(data)
+                HomeFactory.sendToVision(data)
+                // console.log(data)
+                .then(function (response) {
+                	$scope.labels = response.labelAnnotations;
+                	$scope.firstLabel = response.labelAnnotations[0].description;
+                	$scope.secondLabel = response.labelAnnotations[1].description;
+                	var faceInfo = response.faceAnnotations[0];
+                	$scope.anger = faceInfo.angerLikelihood;
+                	$scope.joy = faceInfo.joyLikelihood;
+                	$scope.sorrow = faceInfo.sorrowLikelihood;
+                	$scope.surprise = faceInfo.surpriseLikelihood;
+			        if ($scope.joy === 'VERY_UNLIKELY') {
+			        	$scope.firstMessage = 'You look sad, but you have a nice ' + $scope.firstLabel;
+			        }
+			        if ($scope.joy === 'UNLIKELY') {
+			        	$scope.secondMessage = 'Looks like you are not too sad... Great ' + $scope.secondLabel + ' by the way!';
+			        }
+			        if ($scope.joy === 'LIKELY') {
+			        	$scope.thirdMessage = 'I think you are getting happier';
+			        }
+			        if ($scope.joy === 'POSSIBLE') {
+			        	$scope.thirdMessage = 'Smile, please?';
+			        }
+			        if ($scope.joy === 'VERY_LIKELY') {
+			        	$scope.fourthMessage = 'Awww... beautiful smile';
+			        	video.pause();
+                		videoPlaying  = false;
+                		clearInterval(refreshIntervalId);
+			        }
+                })
+             // document.getElementById('photo').setAttribute('src', data);
+        }
 
-        // while($scope.joy !== 'VERY_LIKELY') {
-
-	        setTimeout(function() {
-	        	var canvas = document.getElementById('canvas');
-	                canvas.width = video.videoWidth;
-	                canvas.height = video.videoHeight;
-	                canvas.getContext('2d').drawImage(video, 0, 0);
-	                var data = canvas.toDataURL('image/jpeg');
-	                // console.log(data)
-	                HomeFactory.sendToVision(data)
-	                .then(function (response) {
-	                	$scope.labels = response.labelAnnotations;
-	                	$scope.firstLabel = response.labelAnnotations[0].description;
-	                	$scope.secondLabel = response.labelAnnotations[1].description;
-	                	var faceInfo = response.faceAnnotations[0];
-	                	$scope.anger = faceInfo.angerLikelihood;
-	                	$scope.joy = faceInfo.joyLikelihood;
-	                	console.log($scope.joy)
-	                	$scope.sorrow = faceInfo.sorrowLikelihood;
-	                	$scope.surprise = faceInfo.surpriseLikelihood;
-				        if ($scope.joy === 'VERY_UNLIKELY') {
-				        	$scope.firstMessage = 'You look sad, but you have a nice ' + $scope.firstLabel;
-				        }
-				        if ($scope.joy === 'UNLIKELY') {
-				        	$scope.secondMessage = 'Looks like you are not too sad... Great ' + $scope.secondLabel + ' by the way!';
-				        }
-				        if ($scope.joy === 'LIKELY') {
-				        	$scope.thirdMessage = 'I think you are getting happier';
-				        }
-				        if ($scope.joy === 'POSSIBLE') {
-				        	$scope.thirdMessage = 'Smile, please?';
-				        }
-				        if ($scope.joy === 'VERY_LIKELY') {
-				        	$scope.fourthMessage = 'Awww... beautiful smile';
-				        	video.pause();
-	                		videoPlaying  = false;
-				        }
-	                })
-	                // document.getElementById('photo').setAttribute('src', data);
-	        }, 3000);
-        // }
+        var refreshIntervalId = setInterval(checkMood, 3000);
 
 	}
 })
