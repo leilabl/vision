@@ -1,12 +1,18 @@
 * {
+  margin: 0;
   box-sizing: border-box;
 }
 
-body {
+html {
+  height: 100%;
+}
 
+body {
+  /*margin-bottom: 50px;*/
   background: #fdfdfd;
   background-color: #FFD34E;
-
+  font-family: 'Lato', sans-serif;
+  height:100%;
 }
 
 @mixin clearfix {
@@ -63,3 +69,16 @@ body {
     position: relative;
     text-align: center;
 }
+
+.btn {
+  font-family: 'Chela One', cursive;
+  font-size: 120%;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -50px;
+  padding: 0 0 50px;
+}
+

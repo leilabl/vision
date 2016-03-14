@@ -9,24 +9,10 @@
 	<!-- <img src="http://placehold.it/350x250"> -->
 </div>
 <div class='row'>
-	<div class='col-sm-4'>
-		<h3>You:</h3>
-		<video  id="v"></video>
-		<canvas id="canvas" style="display:none;"></canvas>
-		<!-- <img src="http://placehold.it/350x150" id="photo" alt="photo"> -->
-	</div>
-	<div class='col-sm-8'>
-		<h3>Your Progress:</h3>
-		<p>{{firstMessage}}</p>
-		<p>{{secondMessage}}</p>
-		<p>{{thirdMessage}}</p>
-		<p>{{fourthMessage}}</p>
-<!-- 		<p ng-repeat='label in labels'>{{label.description}}</p>
-		<p>anger: {{anger}}</p>
-		<p>joy: {{joy}}</p>
-		<p>sorrow: {{sorrow}}</p>
-		<p>surprise: {{surprise}}</p> -->
-	</div>
+	<video style="display:none;" id="v"></video>
+	<canvas id="canvas" style="display:none;"></canvas>
+	<h4>{{firstMessage}}</h4>
+	<p>{{secondMessage}}</p>
 </div>
 
 </section>

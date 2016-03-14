@@ -13,7 +13,7 @@ app.controller('galleryCtrl', function ($scope, $rootScope, GalleryFactory) {
         for (var i=0; i < picsData.length; i++) {
             console.log(i)
             var col = document.createElement("div");
-            col.setAttribute("class", "col-xs-6 col-sm-4 col-lg-3");
+            col.setAttribute("class", "image-column col-xs-6 col-sm-4 col-lg-3");
             col.setAttribute('id', i.toString())
             var myImg = document.createElement("img");
             myImg.src = picsData[i].imageData;

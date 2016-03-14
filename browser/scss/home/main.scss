@@ -10,10 +10,15 @@
     text-align: center;
   }
   button {
-    font-size: 20px;
+    margin-top: 10%;
+    font-size: 25px;
     font-weight: 900;
     animation: blinker 3s ease infinite;
     -webkit-animation: blinker 3s ease infinite;
+    &:hover {
+      animation: none;
+      -webkit-animation: none;
+    }
   }
   @keyframes blinker {  
     50% { opacity: 0.1; }

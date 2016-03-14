@@ -1,0 +1,18 @@
+footer {
+	/*position: absolute;*/
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding-right: 15px;
+    .login-button {
+	    border: 1px solid black;
+	    background: none;
+	    outline: none !important;
+	  }
+	.player-name {
+		vertical-align: middle;
+		padding-bottom: -5px;
+		font-size: 16px;
+		margin-right: 10px;
+	}
+}

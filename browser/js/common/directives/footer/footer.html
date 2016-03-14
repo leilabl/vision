@@ -1,0 +1,7 @@
+<nav class="footer">
+    <button class='btn login-button pull-right' ng-show="!user" ui-sref="login">Login</button>
+    <div class='pull-right' ng-show="user" class="welcome">
+        <span class="player-name">Playing as: {{ user.email }}</span>
+        <button class="btn login-button" ng-click="logout()">Logout</button>
+    </div>
+</nav>

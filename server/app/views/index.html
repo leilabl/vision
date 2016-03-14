@@ -3,7 +3,7 @@
 <head>
     <base href="/" />
     <title>Please Be Serious</title>
-    <link href='https://fonts.googleapis.com/css?family=IM+Fell+English|Chela+One|Miltonian' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato|Chela+One|Miltonian' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="/style.css" />
     <script src="/lodash/index.js"></script>
@@ -17,9 +17,13 @@
     <script src="/main.js"></script>
 </head>
 <body ng-app="FullstackGeneratedApp">
-    <div class='container'>
-        <navbar></navbar>
-        <div id="main" ui-view></div>
+    <div id="wrap">
+        <div class='container'>
+            <navbar></navbar>
+            <div id="main" ui-view></div>
+        </div>
     </div>
+    <!-- <div class='push'></div> -->
+    <footer></footer>
 </body>
 </html>
