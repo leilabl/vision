@@ -50,7 +50,7 @@ app.controller('gameCtrl', function ($scope, $state, GameFactory, FunnyGifs, $ro
             var requestTime = Date.now();
             GameFactory.sendToVision(data)
             .then(function (response) {
-            console.log('here')
+            // console.log('data inside response', data)
                 if (response.labelAnnotations) {
                 	$scope.labels = response.labelAnnotations;
                 	$scope.firstLabel = response.labelAnnotations[0].description;
@@ -61,10 +61,7 @@ app.controller('gameCtrl', function ($scope, $state, GameFactory, FunnyGifs, $ro
                 	$scope.joy = faceInfo.joyLikelihood;
                 	console.log($scope.joy)
     		        if ($scope.joy !== 'VERY_UNLIKELY') {
-                        // pictures.push(video);
-                        // localStorageService.set('pics', pictures);
-                        // $rootScope.picures = pictures;
-                        // console.log(pictures);
+                        $rootScope.data = data;
                         $rootScope.video = video;
                         $rootScope.time = requestTime - timer;
                         video.pause();
@@ -72,7 +69,6 @@ app.controller('gameCtrl', function ($scope, $state, GameFactory, FunnyGifs, $ro
                         
                         localstream.getTracks()[0].stop();          
 
-                        // clearInterval(refreshIntervalId);
                         $state.go('replay');
                         return;
                     } else {
